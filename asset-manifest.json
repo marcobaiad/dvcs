@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/dvcs/static/css/main.ccafe842.chunk.css",
+    "main.js": "/dvcs/static/js/main.a8988d59.chunk.js",
+    "main.js.map": "/dvcs/static/js/main.a8988d59.chunk.js.map",
+    "runtime-main.js": "/dvcs/static/js/runtime-main.21565d8e.js",
+    "runtime-main.js.map": "/dvcs/static/js/runtime-main.21565d8e.js.map",
+    "static/js/2.5123df47.chunk.js": "/dvcs/static/js/2.5123df47.chunk.js",
+    "static/js/2.5123df47.chunk.js.map": "/dvcs/static/js/2.5123df47.chunk.js.map",
+    "static/js/3.24f060d7.chunk.js": "/dvcs/static/js/3.24f060d7.chunk.js",
+    "static/js/3.24f060d7.chunk.js.map": "/dvcs/static/js/3.24f060d7.chunk.js.map",
+    "index.html": "/dvcs/index.html",
+    "precache-manifest.a59849248659c02ba7db97fb9b351d12.js": "/dvcs/precache-manifest.a59849248659c02ba7db97fb9b351d12.js",
+    "service-worker.js": "/dvcs/service-worker.js",
+    "static/css/main.ccafe842.chunk.css.map": "/dvcs/static/css/main.ccafe842.chunk.css.map",
+    "static/js/2.5123df47.chunk.js.LICENSE.txt": "/dvcs/static/js/2.5123df47.chunk.js.LICENSE.txt",
+    "static/media/marca-blanca.png": "/dvcs/static/media/marca-blanca.671e4272.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.21565d8e.js",
+    "static/js/2.5123df47.chunk.js",
+    "static/css/main.ccafe842.chunk.css",
+    "static/js/main.a8988d59.chunk.js"
+  ]
+}
