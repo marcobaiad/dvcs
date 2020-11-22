@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dvc-front/static/css/main.ccafe842.chunk.css",
-    "main.js": "/dvc-front/static/js/main.5a87e95c.chunk.js",
-    "main.js.map": "/dvc-front/static/js/main.5a87e95c.chunk.js.map",
+    "main.js": "/dvc-front/static/js/main.b4cd1e51.chunk.js",
+    "main.js.map": "/dvc-front/static/js/main.b4cd1e51.chunk.js.map",
     "runtime-main.js": "/dvc-front/static/js/runtime-main.79b0a03a.js",
     "runtime-main.js.map": "/dvc-front/static/js/runtime-main.79b0a03a.js.map",
     "static/js/2.2a76f431.chunk.js": "/dvc-front/static/js/2.2a76f431.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.3e25d851.chunk.js": "/dvc-front/static/js/3.3e25d851.chunk.js",
     "static/js/3.3e25d851.chunk.js.map": "/dvc-front/static/js/3.3e25d851.chunk.js.map",
     "index.html": "/dvc-front/index.html",
-    "precache-manifest.59cb893b79a45bb194e1b0f03772b345.js": "/dvc-front/precache-manifest.59cb893b79a45bb194e1b0f03772b345.js",
+    "precache-manifest.b141f1b8cdb819bad9ccca04bd5640ea.js": "/dvc-front/precache-manifest.b141f1b8cdb819bad9ccca04bd5640ea.js",
     "service-worker.js": "/dvc-front/service-worker.js",
     "static/css/main.ccafe842.chunk.css.map": "/dvc-front/static/css/main.ccafe842.chunk.css.map",
     "static/js/2.2a76f431.chunk.js.LICENSE.txt": "/dvc-front/static/js/2.2a76f431.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.79b0a03a.js",
     "static/js/2.2a76f431.chunk.js",
     "static/css/main.ccafe842.chunk.css",
-    "static/js/main.5a87e95c.chunk.js"
+    "static/js/main.b4cd1e51.chunk.js"
   ]
 }
