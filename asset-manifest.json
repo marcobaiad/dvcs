@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/dvc-front/static/css/main.ccafe842.chunk.css",
-    "main.js": "/dvc-front/static/js/main.b4cd1e51.chunk.js",
-    "main.js.map": "/dvc-front/static/js/main.b4cd1e51.chunk.js.map",
-    "runtime-main.js": "/dvc-front/static/js/runtime-main.79b0a03a.js",
-    "runtime-main.js.map": "/dvc-front/static/js/runtime-main.79b0a03a.js.map",
-    "static/js/2.2a76f431.chunk.js": "/dvc-front/static/js/2.2a76f431.chunk.js",
-    "static/js/2.2a76f431.chunk.js.map": "/dvc-front/static/js/2.2a76f431.chunk.js.map",
-    "static/js/3.3e25d851.chunk.js": "/dvc-front/static/js/3.3e25d851.chunk.js",
-    "static/js/3.3e25d851.chunk.js.map": "/dvc-front/static/js/3.3e25d851.chunk.js.map",
-    "index.html": "/dvc-front/index.html",
-    "precache-manifest.b141f1b8cdb819bad9ccca04bd5640ea.js": "/dvc-front/precache-manifest.b141f1b8cdb819bad9ccca04bd5640ea.js",
-    "service-worker.js": "/dvc-front/service-worker.js",
-    "static/css/main.ccafe842.chunk.css.map": "/dvc-front/static/css/main.ccafe842.chunk.css.map",
-    "static/js/2.2a76f431.chunk.js.LICENSE.txt": "/dvc-front/static/js/2.2a76f431.chunk.js.LICENSE.txt",
-    "static/media/marca-blanca.png": "/dvc-front/static/media/marca-blanca.671e4272.png"
+    "main.css": "/dvcs/static/css/main.ccafe842.chunk.css",
+    "main.js": "/dvcs/static/js/main.a5a91a9e.chunk.js",
+    "main.js.map": "/dvcs/static/js/main.a5a91a9e.chunk.js.map",
+    "runtime-main.js": "/dvcs/static/js/runtime-main.b8ce93fb.js",
+    "runtime-main.js.map": "/dvcs/static/js/runtime-main.b8ce93fb.js.map",
+    "static/js/2.2a76f431.chunk.js": "/dvcs/static/js/2.2a76f431.chunk.js",
+    "static/js/2.2a76f431.chunk.js.map": "/dvcs/static/js/2.2a76f431.chunk.js.map",
+    "static/js/3.3e25d851.chunk.js": "/dvcs/static/js/3.3e25d851.chunk.js",
+    "static/js/3.3e25d851.chunk.js.map": "/dvcs/static/js/3.3e25d851.chunk.js.map",
+    "index.html": "/dvcs/index.html",
+    "precache-manifest.6f219fe61b0920983ace472eaca9c2bf.js": "/dvcs/precache-manifest.6f219fe61b0920983ace472eaca9c2bf.js",
+    "service-worker.js": "/dvcs/service-worker.js",
+    "static/css/main.ccafe842.chunk.css.map": "/dvcs/static/css/main.ccafe842.chunk.css.map",
+    "static/js/2.2a76f431.chunk.js.LICENSE.txt": "/dvcs/static/js/2.2a76f431.chunk.js.LICENSE.txt",
+    "static/media/marca-blanca.png": "/dvcs/static/media/marca-blanca.671e4272.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.79b0a03a.js",
+    "static/js/runtime-main.b8ce93fb.js",
     "static/js/2.2a76f431.chunk.js",
     "static/css/main.ccafe842.chunk.css",
-    "static/js/main.b4cd1e51.chunk.js"
+    "static/js/main.a5a91a9e.chunk.js"
   ]
 }
