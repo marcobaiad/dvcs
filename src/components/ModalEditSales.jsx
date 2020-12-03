@@ -6,8 +6,10 @@ import Swal from 'sweetalert2';
 export default function RegSeller({ datos, onChangeHandler, tablasChange, getDatos }) {
 
     const btnCerrar = React.useRef(null);
+    const form = React.useRef();
+    const [contraseña, setContraseña] = React.useState('');
 
-    const alertEdit = async (req, res) => {
+    const alertEdit = async () => {
         Swal.fire({
             title: "¿Estás seguro de guardar los Cambios?",
             showDenyButton: true,
@@ -35,16 +37,28 @@ export default function RegSeller({ datos, onChangeHandler, tablasChange, getDat
     }
 
     const editVentasHandler = async () => {
+        if (contraseña !== '') {
+            datos.password !== contraseña && Swal.fire({
+                title: 'Las contraseñas deben coincidir!',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1000
+            })
+        }
         try {
             tablasChange ?
                 await clienteAxios.put(`api/v1/salesupdate/${datos._id}`, datos)
                 :
-                await clienteAxios.put(`api/v1/sellerupdate/${datos._id}`, datos)
+                await clienteAxios.put(`api/v1/sellerupdate/${datos._id}`, datos);
+            form.current.reset();
             getDatos();
         } catch (error) {
             console.log(error);
         }
     }
+
+
+    console.log(datos, contraseña);
 
     return (
         <>
@@ -53,12 +67,12 @@ export default function RegSeller({ datos, onChangeHandler, tablasChange, getDat
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title text-center" id="exampleModalLabel">Editar {tablasChange ? 'Venta ' + datos.date : 'Vendedor ' + datos.user}</h5>
-                            <button type="button" ref={btnCerrar} className="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" ref={btnCerrar} onClick={() => form.current.reset()} className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            <form className="row justify-content-center">
+                            <form className="row justify-content-center" ref={form}>
                                 {
                                     tablasChange ?
                                         <>
@@ -92,7 +106,7 @@ export default function RegSeller({ datos, onChangeHandler, tablasChange, getDat
                                                     <input type="text" id="mcuotas" className="form-control text-center" placeholder="N° de Cuotas" name="quantityQuotas" onChange={onChangeHandler} value={datos.quantityQuotas} />
                                                 </div>
                                             </div>
-                                            <div className="form-group row" style={{width: "93%"}}>
+                                            <div className="form-group row" style={{ width: "93%" }}>
                                                 <div className="col text-center">
                                                     <label htmlFor="monto">Monto Cuota</label>
                                                     <input type="text" id="monto" className="form-control text-center" placeholder="Monto de Cuotas" name="quotaAmount" onChange={onChangeHandler} value={datos.quotaAmount} />
@@ -132,7 +146,7 @@ export default function RegSeller({ datos, onChangeHandler, tablasChange, getDat
                                                     <input type="text" id="celphone" className="form-control text-center" placeholder="Día" name="celphone" onChange={onChangeHandler} value={datos.celphone} />
                                                 </div>
                                             </div>
-                                            <div className="form-group row" style={{width: "93%"}}>
+                                            <div className="form-group row" style={{ width: "93%" }}>
                                                 <div className="col text-center">
                                                     <label htmlFor="address">Dirección</label>
                                                     <input type="text" id="address" className="form-control text-center" placeholder="Dirección" name="address" onChange={onChangeHandler} value={datos.address} />
@@ -143,6 +157,23 @@ export default function RegSeller({ datos, onChangeHandler, tablasChange, getDat
                                                         <option value="SI" selected={datos.enable == 'SI'}>SI</option>
                                                         <option value="NO">NO</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button className="btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                    Cambiar Contraseña
+                                                </button>
+                                                <div className="collapse" id="collapseExample">
+                                                    <div className="form-group row">
+                                                        <div className="col text-center">
+                                                            <label htmlFor="password">Contraseña</label>
+                                                            <input type="text" id="password" className="form-control text-center" placeholder="Contraseña" name="password" onChange={onChangeHandler} />
+                                                        </div>
+                                                        <div className="col text-center">
+                                                            <label htmlFor="repeatPassword">Repetir Contraseña</label>
+                                                            <input type="text" id="repeatPassword" className="form-control text-center" placeholder="Repetir Contraseña" name="repeatPassword" onChange={e => setContraseña(e.target.value)} />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </>

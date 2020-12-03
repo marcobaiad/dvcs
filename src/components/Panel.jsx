@@ -219,7 +219,12 @@ export default function Panel() {
 
     const onChangeHandler = (e) => {
         let texto = e.target.value.toUpperCase();
-        setFila({ ...fila, [e.target.name]: texto })
+        let pass = e.target.value;
+        if (e.target.name === "password") {
+            setFila({ ...fila, [e.target.name]: pass })
+        } else {
+            setFila({ ...fila, [e.target.name]: texto })
+        }
     }
 
     const deleteSaleHandler = async (props) => {

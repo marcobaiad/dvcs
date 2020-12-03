@@ -11,6 +11,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
     const cerrarModal = React.useRef();
     const resetForm = React.useRef();
     const [enviando, setEnviando] = React.useState(false);
+    const [selectCredit, setSelectCredit] = React.useState(true);
 
 
     const optionsNameSellers = () => {
@@ -105,6 +106,15 @@ const AdminSaleModal = ({ datos, getDatos }) => {
         e.preventDefault()
     }
 
+    const changeSelectTipeLine = () => {
+        setSelectCredit(false)
+    }
+    
+    React.useEffect(() => {
+        sellerForm.creditLine === "OTRO" && changeSelectTipeLine();
+    }, [sellerForm]);
+
+
     return (
         <>
             <div className="modal fade"
@@ -123,37 +133,35 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                 <div className="form-row">
                                     <div className="form-group col-sm-6">
                                         <label htmlFor="inputStateCredito">Linea de Crédito *</label>
-                                        <select id="inputStateCredito" className="form-control" onChange={actualizarState} name="creditLine">
-                                            <option >Elegir...</option>
-                                            <option value="sencillo">Sencillo</option>
-                                            <option value="rapicredito">Rapicredito</option>
-                                        </select>
+                                        { selectCredit ?
+                                            <select id="inputStateCredito" className="form-control" onChange={actualizarState} name="creditLine">
+                                                <option hidden selected>Elegir...</option>
+                                                <option value="Credito N° 1">Credito N° 1</option>
+                                                <option value="Credito N° 2">Credito N° 2</option>
+                                                <option value="Credito N° 3">Credito N° 3</option>
+                                                <option value="Credito N° 4">Credito N° 4</option>
+                                                <option value="otro">Otro...</option>
+                                            </select>
+                                            :
+                                            <input className="form-control" placeholder="Crédito" name="creditLine" id="inputStateCredito" onChange={actualizarState} />
+                                        }
                                     </div>
                                     <div className="form-group col-sm-6">
                                         <label htmlFor="inputStateOperacion">Indique tipo de operación *</label>
                                         <select id="inputStateOperacion" className="form-control" onChange={actualizarState} name="typeOperation">
-                                            <option >Elegir...</option>
+                                            <option hidden selected>Elegir...</option>
                                             <option value="credito">Crédito</option>
                                             <option value="electro">Electro</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-row">
-                                    <div className="form-group col-sm-6 ">
+                                    <div className="form-group col-12 ">
                                         <label htmlFor="inputStateNew">Cliente Nuevo *</label>
                                         <select id="inputStateNew" className="form-control" onChange={actualizarState} name="newClient">
-                                            <option >Elegir...</option>
+                                            <option hidden selected>Elegir...</option>
                                             <option value="SI">Si</option>
                                             <option value="NO">No</option>
-                                        </select>
-                                    </div>
-                                    <div className="form-group col-sm-6 ">
-                                        <label htmlFor="inputStateTypeClient">Tipo de Cliente *</label>
-                                        <select id="inputStateTypeClient" className="form-control" onChange={actualizarState} name="typeClient">
-                                            <option >Elegir...</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
                                         </select>
                                     </div>
                                 </div>
@@ -213,7 +221,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                     <div className="form-group col-sm-6">
                                         <label htmlFor="inputStateCantidadCuotas">Cantidad de Cuotas *</label>
                                         <select id="inputStateCantidadCuotas" className="form-control" onChange={actualizarState} name="quantityQuotas">
-                                            <option value={0}>Elegir...</option>
+                                            <option value={0} hidden selected>Elegir...</option>
                                             <option value={1}>0</option>
                                             <option value={3}>3</option>
                                             <option value={6}>6</option>
@@ -251,7 +259,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                     <div className="form-group col-sm-6">
                                         <label htmlFor="vendedor" className="col-form-label">Vendedor *</label>
                                         <select id="vendedor" name="fullname" className="form-control" onChange={actualizarState}>
-                                            <option selected disabled>Elegir...</option>
+                                            <option selected disabledhidden selected>Elegir...</option>
                                             {options}
                                         </select>
                                     </div>
@@ -286,8 +294,8 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                     <div>
                                         {
                                             enviando ?
-                                                <div class="spinner-border text-secondary" role="status">
-                                                    <span class="sr-only">Loading...</span>
+                                                <div className="spinner-border text-secondary" role="status">
+                                                    <span className="sr-only">Loading...</span>
                                                 </div>
                                                 :
                                                 <button
