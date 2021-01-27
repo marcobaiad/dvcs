@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <div className="d-none">
-        <a href="/dvcs"></a>
+        <a href="/"></a>
         <a href="/panel"></a>
         <a href="/seller"></a>
       </div>

@@ -20,7 +20,6 @@ const SellerModal = ({ getDatos }) => {
       ...sellerForm, [e.target.name]: texto
     })
   }
-  console.log(sellerForm);
 
   const crearNuevaVenta = async (e) => {
     e.preventDefault();
@@ -35,9 +34,48 @@ const SellerModal = ({ getDatos }) => {
       return
     }
     try {
+      if (sellerForm['creditLine'] == undefined) {
+        Swal.fire({
+          title: 'El campo "Linea de Crédito" es requerido',
+          text: 'Por favor, deberás completar correctamente el formulario para poder realizar la venta',
+          icon: 'info',
+          showConfirmButton: true
+        })
+        setEnviando(false);
+        return
+      }
+      if (sellerForm['typeOperation'] == undefined) {
+        Swal.fire({
+          title: 'El campo "Tipo de Operación" es requerido',
+          text: 'Por favor, deberás completar correctamente el formulario para poder realizar la venta',
+          icon: 'info',
+          showConfirmButton: true
+        })
+        setEnviando(false);
+        return
+      }
+      if (sellerForm['newClient'] == undefined) {
+        Swal.fire({
+          title: 'El campo "Cliente Nuevo" es requerido',
+          text: 'Por favor, deberás completar correctamente el formulario para poder realizar la venta',
+          icon: 'info',
+          showConfirmButton: true
+        })
+        setEnviando(false);
+        return
+      }
+      if (sellerForm['fullname'] == undefined) {
+        Swal.fire({
+          title: 'El campo "Vendedor" es requerido',
+          text: 'Por favor, deberás completar correctamente el formulario para poder realizar la venta',
+          icon: 'info',
+          showConfirmButton: true
+        })
+        setEnviando(false);
+        return
+      }
 
       const NewSales = await clienteAxios.post('api/v1/regsales', sellerForm)
-      console.log('newsales ->', NewSales.data.id)
       const formData = new FormData()
       formData.append('myFile', pdf)
       await clienteAxios.post(`api/v1/regsales/${NewSales.data.id}/sendpdf`, formData, {
@@ -56,7 +94,15 @@ const SellerModal = ({ getDatos }) => {
       getDatos();
       setEnviando(false);
     } catch (error) {
-      console.log(error);
+      setEnviando(false);
+      console.log(error.response);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ocurrió un error al querer cargar la venta',
+        text: 'Por favor, intenta de nuevo más tarde',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
 
   }

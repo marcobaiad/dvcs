@@ -15,7 +15,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
 
 
     const optionsNameSellers = () => {
-        let opciones = dataName.map(o => <option key={o._id} value={o.fullname}>{o.fullname}</option>)
+        let opciones = datos && dataName.map(o => <option key={o._id} value={o.fullname}>{o.fullname}</option>)
         setOptions(opciones)
     }
 
@@ -47,9 +47,50 @@ const AdminSaleModal = ({ datos, getDatos }) => {
             })
             return
         }
+        if (sellerForm['creditLine'] == undefined) {
+            Swal.fire({
+                title: 'El campo "Linea de Crédito" es requerido',
+                text: 'Por favor, deberás completar correctamente el formulario para poder realizar la venta',
+                icon: 'info',
+                showConfirmButton: true
+            })
+            setEnviando(false);
+            return
+        }
+        if (sellerForm['typeOperation'] == undefined) {
+            Swal.fire({
+                title: 'El campo "Tipo de Operación" es requerido',
+                text: 'Por favor, deberás completar correctamente el formulario para poder realizar la venta',
+                icon: 'info',
+                showConfirmButton: true
+            })
+            setEnviando(false);
+            return
+        }
+        if (sellerForm['newClient'] == undefined) {
+            Swal.fire({
+                title: 'El campo "Cliente Nuevo" es requerido',
+                text: 'Por favor, deberás completar correctamente el formulario para poder realizar la venta',
+                icon: 'info',
+                showConfirmButton: true
+            })
+            setEnviando(false);
+            return
+        }
+        if (sellerForm['fullname'] == undefined) {
+            Swal.fire({
+                title: 'El campo "Vendedor" es requerido',
+                text: 'Por favor, deberás completar correctamente el formulario para poder realizar la venta',
+                icon: 'info',
+                showConfirmButton: true
+            })
+            setEnviando(false);
+            return
+        }
+
         try {
 
-            const NewSales = await clienteAxios.post('api/v1/regsales', sellerForm)
+            const NewSales = await clienteAxios.post('api/v1/regsales', sellerForm);
             const formData = new FormData()
             formData.append('myFile', pdf)
             await clienteAxios.post(`api/v1/regsales/${NewSales.data.id}/sendpdf`, formData, {
@@ -68,7 +109,16 @@ const AdminSaleModal = ({ datos, getDatos }) => {
             getDatos();
             setEnviando(false);
         } catch (error) {
-            console.log(error);
+            const { response } = error;
+            console.log(response);
+            setEnviando(false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Ocurrió un error al querer cargar la venta',
+                text: 'Por favor, intenta de nuevo más tarde',
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
 
     }
@@ -109,7 +159,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
     const changeSelectTipeLine = () => {
         setSelectCredit(false)
     }
-    
+
     React.useEffect(() => {
         sellerForm.creditLine === "OTRO" && changeSelectTipeLine();
     }, [sellerForm]);
@@ -133,8 +183,8 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                 <div className="form-row">
                                     <div className="form-group col-sm-6">
                                         <label htmlFor="inputStateCredito">Linea de Crédito *</label>
-                                        { selectCredit ?
-                                            <select id="inputStateCredito" className="form-control" onChange={actualizarState} name="creditLine">
+                                        {selectCredit ?
+                                            <select required id="inputStateCredito" className="form-control" onChange={actualizarState} name="creditLine">
                                                 <option hidden selected>Elegir...</option>
                                                 <option value="Credito N° 1">Credito N° 1</option>
                                                 <option value="Credito N° 2">Credito N° 2</option>
@@ -148,7 +198,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                     </div>
                                     <div className="form-group col-sm-6">
                                         <label htmlFor="inputStateOperacion">Indique tipo de operación *</label>
-                                        <select id="inputStateOperacion" className="form-control" onChange={actualizarState} name="typeOperation">
+                                        <select required id="inputStateOperacion" className="form-control" onChange={actualizarState} name="typeOperation">
                                             <option hidden selected>Elegir...</option>
                                             <option value="credito">Crédito</option>
                                             <option value="electro">Electro</option>
@@ -158,7 +208,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                 <div className="form-row">
                                     <div className="form-group col-12 ">
                                         <label htmlFor="inputStateNew">Cliente Nuevo *</label>
-                                        <select id="inputStateNew" className="form-control" onChange={actualizarState} name="newClient">
+                                        <select required id="inputStateNew" className="form-control" onChange={actualizarState} name="newClient">
                                             <option hidden selected>Elegir...</option>
                                             <option value="SI">Si</option>
                                             <option value="NO">No</option>
@@ -220,7 +270,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                 <div className="form-row">
                                     <div className="form-group col-sm-6">
                                         <label htmlFor="inputStateCantidadCuotas">Cantidad de Cuotas *</label>
-                                        <select id="inputStateCantidadCuotas" className="form-control" onChange={actualizarState} name="quantityQuotas">
+                                        <select required id="inputStateCantidadCuotas" className="form-control" onChange={actualizarState} name="quantityQuotas">
                                             <option value={0} hidden selected>Elegir...</option>
                                             <option value={1}>0</option>
                                             <option value={3}>3</option>
@@ -258,7 +308,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                     </div>
                                     <div className="form-group col-sm-6">
                                         <label htmlFor="vendedor" className="col-form-label">Vendedor *</label>
-                                        <select id="vendedor" name="fullname" className="form-control" onChange={actualizarState}>
+                                        <select required id="vendedor" name="fullname" className="form-control" onChange={actualizarState}>
                                             <option selected disabledhidden selected>Elegir...</option>
                                             {options}
                                         </select>
@@ -288,6 +338,7 @@ const AdminSaleModal = ({ datos, getDatos }) => {
                                         data-dismiss="modal"
                                         type="button"
                                         ref={cerrarModal}
+                                        onClick={() => setEnviando(false)}
                                     >
                                         Cerrar
                                     </button>

@@ -57,9 +57,6 @@ export default function RegSeller({ datos, onChangeHandler, tablasChange, getDat
         }
     }
 
-
-    console.log(datos, contraseña);
-
     return (
         <>
             <div className="modal" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

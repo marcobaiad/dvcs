@@ -2,7 +2,7 @@
   "name": "dvc-front",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://marcobaiad.github.io/dvcs",
+  "homepage": "http://ventas.delvallecreditos.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -17,7 +17,7 @@
     "sweetalert2": "^10.5.1"
   },
   "scripts": {
-    "predeploy": "npm run build && echo https://marcobaiad.github.io/dvcs > ./build/CNAME",
+    "predeploy": "npm run build && echo http://ventas.delvallecreditos.com/ > ./build/CNAME",
     "deploy": "gh-pages -d build",
     "postbuild": "react-snap",
     "start": "react-scripts start",
